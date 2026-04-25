@@ -18,7 +18,8 @@ model = None
 def get_model():
     global model
     if model is None:
-        model = WhisperModel("base", device="cpu")
+        model = WhisperModel("tiny", device="cpu")
+        # model = WhisperModel("base", device="cpu")
     return model
 
 def transcribe(audio_path):
