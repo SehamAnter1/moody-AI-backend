@@ -21,7 +21,7 @@ sentiment = pipeline("sentiment-analysis")
 
 HF_API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
 # HF_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct"
-HF_TOKEN = os.getenv("HF_TOKEN")
+HF_TOKEN = os.getenv("HF_TOKEN",'')
 
 
 def generate_reply(text, emotion=None):
