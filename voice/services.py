@@ -1,6 +1,6 @@
 import uuid
 import os
-import cloudinary
+import cloudinary.uploader
 import edge_tts
 from faster_whisper import WhisperModel
 import tempfile
