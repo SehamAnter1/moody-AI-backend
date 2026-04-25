@@ -8,13 +8,21 @@ import requests
 
 import asyncio
 # model = WhisperModel("base", compute_type="int8")
-model = WhisperModel(
-    "base",
-    device="cpu",
-    compute_type="int8"
-)
+# model = WhisperModel(
+#     "base",
+#     device="cpu",
+#     compute_type="int8"
+# )
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        model = WhisperModel("base", device="cpu")
+    return model
 
 def transcribe(audio_path):
+    model = get_model()
     segments, info = model.transcribe(audio_path)
     return " ".join([s.text for s in segments])
 # sentiment = pipeline("sentiment-analysis")
