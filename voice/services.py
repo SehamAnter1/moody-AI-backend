@@ -3,7 +3,7 @@ import os
 import edge_tts
 from faster_whisper import WhisperModel
 import tempfile
-from transformers import pipeline
+# from transformers import pipeline
 import requests
 
 import asyncio
@@ -17,7 +17,7 @@ model = WhisperModel(
 def transcribe(audio_path):
     segments, info = model.transcribe(audio_path)
     return " ".join([s.text for s in segments])
-sentiment = pipeline("sentiment-analysis")
+# sentiment = pipeline("sentiment-analysis")
 
 HF_API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
 # HF_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct"
