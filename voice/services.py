@@ -1,5 +1,6 @@
 import uuid
 import os
+import cloudinary
 import edge_tts
 from faster_whisper import WhisperModel
 import tempfile
@@ -85,5 +86,10 @@ def text_to_speech(text, voice="en-US-JennyNeural"):
         await communicate.save(file_path)
 
     asyncio.run(_run())
+    upload_result = cloudinary.uploader.upload(
+        file_path,
+        resource_type="video"  # important for mp3
+    )
+    os.remove(file_path)
 
-    return file_path
+    return upload_result["secure_url"]

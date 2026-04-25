@@ -15,6 +15,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # cache settings for Hugging Face models
 os.environ["HF_HOME"] = "/tmp"
@@ -107,6 +110,12 @@ DATABASES = {
     )
 }
 
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True
+)
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
